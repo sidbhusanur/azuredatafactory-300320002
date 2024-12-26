@@ -164,36 +164,6 @@
 				"[concat(variables('factoryId'), '/datasets/datalakeCSV')]",
 				"[concat(variables('factoryId'), '/datasets/datalakeParquet')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ScheduledTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "01_ActivityLog_CSV_Parquet",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 2,
-						"startTime": "2024-12-26T15:55:00",
-						"timeZone": "Central Europe Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/01_ActivityLog_CSV_Parquet')]"
-			]
 		}
 	]
 }
